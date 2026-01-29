@@ -1,0 +1,11 @@
+Serenity's word search
+30 30
+serenity
+doritos
+strangerthings
+6thgrade
+garfield
+smoky
+horsebackriding
+lacroix
+moore
