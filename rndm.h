@@ -1,7 +1,3 @@
-// Programmer: Lee Greenbank
-
-// Course: cS 14
-
 // File Name: Rndm.h
 
 // Project Name: WordSrch
