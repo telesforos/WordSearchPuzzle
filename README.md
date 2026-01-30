@@ -1,4 +1,4 @@
-The user is prompted for the name of a text (.txt) file containing the list of words to be hidden in the Word Search puzzle. If the word file does not reside in the same directory as the WordSrch.exe program, then
+The user is prompted for the name of a text (.txt) file containing the list of words to be hidden in the Word Search puzzle. If the word file does not reside in the same directory as the WordSrch program, then
 the entire path name must be supplied.
 The format of the word list text file is as follows:
 1st line: Puzzle name - the entire first line of the file is used as the puzzle title.
