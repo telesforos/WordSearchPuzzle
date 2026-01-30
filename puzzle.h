@@ -1,5 +1,3 @@
-// Programmer: Lee Greenbank
-// Course: CS 14
 // File Name: Puzzle.h
 // Project Name: WordSrch
 
