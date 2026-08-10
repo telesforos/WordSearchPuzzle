@@ -1,0 +1,11 @@
+Laila's word search
+30 30
+laila
+gymnastics
+3rdgrade
+youngsheldon
+strawberries
+garfield
+smoky
+drpepper
+pace

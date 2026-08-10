@@ -5,11 +5,16 @@
 //Project Name: Wordsrch
 
 #include "attempt.h"
+#include "Exception.h"
 
-Rndm Attempt::RandGen; 
+Rndm Attempt::RandGen;
 
 Attempt::Attempt (int TheWordIndex, int TheHeight,int TheWidth)
 {
+	EXCEPTION (TheWordIndex < 0, "Attempt word index cannot be negative");
+	EXCEPTION (TheHeight <= 0 || TheWidth <= 0,
+			   "Attempt grid dimensions must be positive");
+
 	Height = TheHeight;
 	Width = TheWidth;
 	WordIndex = TheWordIndex;

@@ -1,6 +1,17 @@
-*.txt
-*.odt
+# Build output
 *.o
+*.d
+wordsrch
+wordsrch_tests
+
+# Generated puzzle output -- the word list inputs (garden.txt, instruments.txt,
+# ...) are project data and ARE tracked. A blanket *.txt rule used to hide them.
+Puzzles.txt
+
+# Large binary scans of the original assignment handout
+*.tif
+*.odt
+
 # Packages #
 ############
 # it's better to unpack these files and commit the raw source

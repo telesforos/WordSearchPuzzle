@@ -112,6 +112,14 @@
 // distribution in the range of 0 <= x.
 
 
+// IMPLEMENTATION NOTE:
+// This class uses L'Ecuyer's combined multiplicative recursive generator,
+// which is what the two documented seeds are for. The previous implementation
+// stored Sd2 and then never read it, so it was really a single-seed Lehmer
+// generator and half the documented interface was dead. It also multiplied
+// the seed directly, which overflows a 32-bit long; the combined generator
+// below uses Schrage's method and stays inside 32 bits throughout.
+
 #ifndef RNDM_H
 #define RNDM_H
 
@@ -146,5 +154,13 @@ public:
 
 private:
 	long Seed1, Seed2;
+
+	// Cached second deviate from the Box-Muller transform. Per-object, so two
+	// generators cannot hand each other values from the wrong seed stream.
+	bool HaveSpare = false;
+	double Spare = 0.0;
+
+	// Force the seeds into the ranges the two recurrences require.
+	void Normalize();
 };
 #endif

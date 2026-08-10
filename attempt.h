@@ -74,24 +74,36 @@ const int NUM_DIRECTIONS = 8; // Possible direction indexes 0..(NUM_DIRECTIONS~1
 class Attempt
 {
 public:
-	Attempt() {}; // Default, does no initialization, but required.
+	// Default constructor. Required by the Vector and Stack templates, which
+	// default-construct their arrays before assigning into them. The members
+	// are zeroed rather than left indeterminate so that a stray read is a
+	// wrong answer rather than undefined behaviour.
+	Attempt() {}
 	Attempt(int TheWordIndex, int TheHeight, int TheWidth);
+
+	// The default copy constructor and operator= are correct here: every
+	// member is a plain int, so a shallow copy is a complete copy. The stack
+	// relies on this to save and restore attempt records.
+
 	int ID() const {return WordIndex;}
 	int FirstVert() const {return VertStart;}
 	int FirstHorz() const {return HorzStart;}
 	int Direction() const {return DirectionIndex;}
 	void NextWord() {WordIndex++; PickFirstTry();}
 	int NextTry();
+
+	// Reseed the generator shared by every Attempt, so a run can be repeated.
+	static void SeedRandom(long Seed) { RandGen.SetSeeds(Seed, Seed + 1); }
 private:
-	int WordIndex;			// Index of word represented by this object
-	int DirectionIndex;		// 0..(NUM_DIRECTIONS - 1); current index
-	int DirectionAttempt;	// 1..NUM_DIRECTIONS; number of directions tried
-	int Height;				// Height of puzzle
-	int Width;				// Width of puzzle
-	int VertStart;			// 1..Height
-	int HorzStart;			// 1..Width
-	int NumPositions;		// Width * Height
-	int PositionAttempt;	// 1..NumPositions; number of positions tried
+	int WordIndex = 0;			// Index of word represented by this object
+	int DirectionIndex = 0;		// 0..(NUM_DIRECTIONS - 1); current index
+	int DirectionAttempt = 1;	// 1..NUM_DIRECTIONS; number of directions tried
+	int Height = 0;				// Height of puzzle
+	int Width = 0;				// Width of puzzle
+	int VertStart = 1;			// 1..Height
+	int HorzStart = 1;			// 1..Width
+	int NumPositions = 0;		// Width * Height
+	int PositionAttempt = 1;	// 1..NumPositions; number of positions tried
 	static Rndm RandGen;	// A pseudo-random number generator shared by class
 
 	void PickFirstTry();

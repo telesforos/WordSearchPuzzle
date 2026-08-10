@@ -1,5 +1,5 @@
-#ifndef __absstack
-#define __absstack
+#ifndef ABSSTACK_H
+#define ABSSTACK_H
 
 // Stack abstract class interface
 //
@@ -10,15 +10,14 @@
 // copy construction of Stack objects is DISALLOWED
 //---------------- PUBLIC OPERATIONS ----------
 // All of the following are pure virtual functions
-// void Push( Etype X } --> Insert X
-// void Pop( }) --> Remove most recently inserted item
+// void Push( Etype X ) --> Insert X
+// void Pop( ) --> Remove most recently inserted item
 // Etype Top( ) --> Return most recently inserted item
-// int IsEmpty( } --> Return 1 if empty; else return 0
-// int IsFull( ) _--> Return 1 if full; else return 0
-//-void MakeEmpty( ) --> Remove all items
-
+// int IsEmpty( ) --> Return 1 if empty; else return 0
+// int IsFull( ) --> Return 1 if full; else return 0
+// void MakeEmpty( ) --> Remove all items
+//
 // ------------- ERRORS ---------------
-
 // Top or Pop on empty stack
 
 template <class Etype>
@@ -27,13 +26,13 @@ class AbsStack
 public :
 	AbsStack( ) { } // Default constructor
 	virtual ~AbsStack( ) { } // Destructor
+	AbsStack( const AbsStack & ) = delete;
+	AbsStack & operator=( const AbsStack & ) = delete;
 	virtual void Push( const Etype & X ) = 0; // Insert
 	virtual void Pop( ) = 0; // Remove
 	virtual const Etype & Top( ) const = 0; // Find
 	virtual int IsEmpty( ) const = 0;
 	virtual int IsFull( ) const = 0;
 	virtual void MakeEmpty( ) = 0;
-private :
-	AbsStack( const AbsStack & ) { }
 };
 #endif
