@@ -4,8 +4,6 @@ Designs "Word Search" puzzles from a text file of words. Words are hidden at
 random in a two-dimensional grid in any of eight directions and may overlap,
 sharing letters. Leftover cells are filled with random letters as camouflage.
 
-This is CS14 Project 1 (Greenbank). The backtracking search over an explicit
-attempt stack is the point of the assignment.
 
 ## Building
 
